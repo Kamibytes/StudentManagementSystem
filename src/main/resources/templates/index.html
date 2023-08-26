@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Management System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Student Management System</a>
+      </nav>
+
+	  <div>
+		<h1>List Students</h1>
+	  </div>
+	  <div>
+		  <a th:href="@{/new}" class="btn btn-primary">Add Student</a>
+	  </div>
+      
+	  <div>
+		<table class="table">
+			<thead class="thead-dark">
+			  <tr>
+				<th scope="col">Student Id</th>
+				<th scope="col">Student Name</th>
+				<th scope="col">Student Number</th>
+				<th scope="col">Student Email</th>
+				<th scope="col">Student Action</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr th:each="student: ${listStudent}">
+				<th scope="row" th:text="${student.id}"></th>
+				<td th:text="${student.name}"></td>
+				<td th:text="${student.number}"></td>
+				<td th:text="${student.email}"></td>
+				<td>
+					<a th:href="@{'/update/'+ ${student.id}}" class="btn btn-success">Update</a>
+					<a th:href="@{'/delete/'+ ${student.id}}" class="btn btn-danger">Delete</a>
+				</td>
+			  </tr>
+			</tbody>
+		  </table>
+
+	  </div>
+	  
+    </div>
+  </body>
+</html>
